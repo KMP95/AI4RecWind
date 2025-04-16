@@ -1,0 +1,11 @@
+--data-types ws
+--model-name best.pth
+--steady-masks mask_spain_with_0_reversed.nc
+--out-channels 1
+--encoding-layers 5
+--pooling-layers 4
+--conv-factor 256
+--device cuda
+--partitions 8
+--masked-bn
+--normalize-data

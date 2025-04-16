@@ -1,0 +1,23 @@
+--batch-size 64
+--data-types ws
+--data-names train_data_m_s_2011_2019_pen.nc
+--mask-names train_hourly_mask_era5SL_010_144x144_m_s_2011_2019_pen.nc 
+#--resume-iter 200000
+--max-iter 2000000
+--lazy-load
+--log-interval 1000
+--loss-criterion 1
+--shuffle-masks 
+--lr 5e-5
+--n-threads 8
+--steady-masks mask_spain_with_0.nc
+#--early-stopping-delta 1e-8
+#--early-stopping-patience 50
+--n-iters-val 50
+--val-metrics hole,valid,tv,feature
+--encoding-layers 5
+--pooling-layers 4
+--conv-factor 256
+--log-dir ./logs
+--masked-bn
+--normalize-data
