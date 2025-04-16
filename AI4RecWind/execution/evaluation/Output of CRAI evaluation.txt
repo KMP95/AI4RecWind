@@ -1,0 +1,18 @@
+Output of CRAI evaluation
+
+Running the evaluation of CRAI generates 5 .nc files:
+-gt
+-image
+-infilled
+-mask
+-output
+
+GT stands for the ground truth. In the case where the test data, i.e. the data to be evaluated, is a continuous data from ERA5-Land, GT is this continuous data. If, on the other hand, we are inputing the AEMET observation data, this data with holes in it corresponds to the GT.
+
+Image is the input data with holes, so the one to be reconstructed. This is obtained by applying the mask over GT.
+
+Infilled corresponds to the "pure" CRAI output, i.e. the reconstructed image. However, note that the pixels for which we knew the GT, so the ones in Image, may not share the same value in the Infilled data, since CRAI may have changed them.
+
+Mask contains 0,1 values for holes and valid pixels respectively. 
+
+Output is similar to Infilled, it corresponds to the reconstruction of CRAI but where the value of the pixels for which the gt was known is conserved. In output, the valid pixels of the input image are kept.
