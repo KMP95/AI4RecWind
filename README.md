@@ -8,7 +8,6 @@ This implementation builds on the CRAI software developed by DKRZ and adapts it 
 
 ## Overview
 
-- 🔧 **Reconstruction-first design**: This repository is intended primarily for **reconstructing missing data** using a **pre-trained model**.
 - 🧠 **Model architecture**: Based on a partial convolution U-Net (PCNN) with optional LSTM, GRU, and Attention mechanisms.
 - 🗺️ **Use case**: Filling gaps in daily windspeed maps from AEMET’s station network.
 
@@ -66,15 +65,16 @@ Before running the script, ensure `run_eval_CRAI.sh` is updated with:
 ### 📁 Input Files
 
 - `input_data/` should include:
+  - `test/`: test data to reconstruct
   - `masks/`: observation masks (1 = valid, 0 = missing)
-  - `steady_mask`: inverted land/sea mask (1 = sea, 0 = land), required for evaluation
+  - `steady_mask_reversed`: inverted land/sea mask (1 = sea, 0 = land), required for evaluation (provided in the repository for Spain)
 
 ### ⚙️ Configuration File
 
 The script uses `evaluation_spain.inp`, which defines:
 - The variable to reconstruct
 - Model hyperparameters
-- Number of partitions (to manage GPU memory usage)
+- Number of partitions (to manage GPU memory usage: the smaller the VRAM of the gpu the larger the number of the partitions is needed)
 
 ### 📤 Outputs
 
@@ -97,7 +97,7 @@ If you wish to train your own model from scratch:
   - **Gridded data files** (complete datasets)
   - **Observation masks** for each timestamp in `input_data/masks/`  
     (reflecting which grid points are valid/missing at each time)
-  - **Steady land/sea mask**: 1 = land, 0 = sea
+  - **Steady land/sea mask**: 1 = land, 0 = sea (provided in the repository for Spain)
   - **Inverted land/sea mask** (used in evaluation)
 
 ### ▶️ Launching Training
@@ -140,12 +140,12 @@ Kadow et al. (2020), Nature Geoscience
 ### 👥 Contributors
 
 Maintained by the **Climate Informatics and Technology Group at DKRZ**  
-- *Past*: Naoto Inoue, Christopher Kadow, Stephan Seitz  
-- *Present*: Johannes Meuer, Maximilian Witte, Étienne Plésiat
+- *Previous contributing authors:*: Naoto Inoue, Christopher Kadow, Stephan Seitz  
+- *Current contributing authors*: Johannes Meuer, Maximilian Witte, Étienne Plésiat
 
 ### 🔑 License
 
-CRAI is distributed under the **BSD 3-Clause License**.
+CRAI is licensed under the terms of the **BSD 3-Clause license**.
 
 ---
 
